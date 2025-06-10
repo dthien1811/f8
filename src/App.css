@@ -1,38 +1,820 @@
+
 .App {
-  text-align: center;
+
+ text-align: center;
+
 }
+
+
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+ height: 40vmin;
+
+ pointer-events: none;
+
 }
+
+
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+ .App-logo {
+
+  animation: App-logo-spin infinite 20s linear;
+
+ }
+
 }
+
+
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+ background-color: #282c34;
+
+ min-height: 100vh;
+
+ display: flex;
+
+ flex-direction: column;
+
+ align-items: center;
+
+ justify-content: center;
+
+ font-size: calc(10px + 2vmin);
+
+ color: white;
+
 }
+
+
 
 .App-link {
-  color: #61dafb;
+
+ color: #61dafb;
+
 }
 
+
+
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+ from {
+
+  transform: rotate(0deg);
+
+ }
+
+ to {
+
+  transform: rotate(360deg);
+
+ }
+
+}
+
+
+
+/* Tùy chỉnh tổng thể input group để bo tròn toàn bộ */
+
+.input-group {
+
+ border: 1px solid #ced4da; /* Viền ngoài màu xám nhạt */
+
+ border-radius: 25px;
+
+ overflow: hidden;
+
+ box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+
+}
+
+
+
+/* Giữ nguyên phần tùy chỉnh cho icon search */
+
+.input-group-text {
+
+ background-color: #FFFFFF !important;
+
+ border: none !important;
+
+ padding-left: 1.25rem;
+
+ /* color: #6c757d !important; */ /* Màu icon search (nếu bạn không dùng text-muted) */
+
+}
+
+
+
+/* Giữ nguyên phần tùy chỉnh cho input */
+
+.form-control {
+
+ background-color: #FFFFFF;
+
+ border: none !important; /* Loại bỏ viền riêng của input */
+
+ box-shadow: none !important;
+
+ padding-right: 1.25rem;
+
+}
+
+
+
+.form-control::placeholder {
+
+ color: #888888;
+
+ opacity: 1;
+
+}
+
+
+
+/* Khi input được focus (click vào) */
+
+.form-control:focus {
+
+ background-color: #FFFFFF; /* Giữ nguyên màu nền trắng khi focus */
+
+ /* Thay đổi border-color và thêm lại border cho input-group khi focus */
+
+ border-color: transparent !important; /* Đảm bảo không có viền xanh của Bootstrap khi focus */
+
+ box-shadow: none !important; /* Loại bỏ shadow xanh mặc định của Bootstrap khi focus */
+
+ outline: 0; /* Đảm bảo không có outline mặc định của trình duyệt */
+
+}
+
+
+
+/* THÊM MỚI hoặc SỬA ĐỔI QUAN TRỌNG ĐỂ CÓ VIỀN ĐEN KHI FOCUS */
+
+.input-group:focus-within { /* Áp dụng style cho toàn bộ input-group khi bất kỳ phần tử con nào của nó được focus */
+
+ border-color: #000000 !important; /* Đổi màu viền thành đen */
+
+ border-width: 2px !important;
+
+}
+
+
+
+/* Đảm bảo icon search và placeholder không đổi màu khi focus nếu bạn không muốn */
+
+.input-group:focus-within .input-group-text,
+
+.input-group:focus-within .form-control::placeholder {
+
+ /* Bạn có thể giữ nguyên màu hoặc thay đổi ở đây nếu muốn */
+
+ /* Ví dụ, nếu muốn icon cũng nổi bật hơn khi focus, có thể thay đổi color */
+
+}
+
+/* CustomHeader.css */
+
+
+
+/* Ghi đè vị trí cho dropdown menu */
+
+.dropdown .dropdown-menu {
+
+ top: 100% !important; /* Đặt ngay dưới nút kích hoạt */
+
+ right: 0 !important; /* Căn phải với nút kích hoạt */
+
+ left: auto !important;
+
+ /* Đảm bảo không bị căn trái mặc định */
+
+ transform: none !important; /* Loại bỏ mọi transform không mong muốn */
+
+ margin-top: 5px !important; /* Thêm khoảng cách */
+
+}
+
+
+
+/* Đảm bảo dropdown chỉ hiện khi có class 'show' */
+
+.dropdown .dropdown-menu:not(.show) {
+
+ display: none;
+
+}
+
+
+
+/* Trong App.css hoặc Footer.css */
+
+
+
+.floating-action-button {
+
+ position: fixed;
+
+ bottom: 50px;
+
+ left: 20px;
+
+ background-color: #F0F0F0; /* Màu nền xám đậm mặc định */
+
+ border-radius: 50%;
+
+ width: 40px;
+
+ height: 40px;
+
+ display: flex;
+
+ align-items: center;
+
+ justify-content: center;
+
+ cursor: pointer;
+
+ border: 1px solid #6c757d;
+
+ transition: background-color 0.3s ease, border-color 0.3s ease; /* Thêm hiệu ứng chuyển đổi mượt mà */
+
+}
+
+
+
+.floating-action-button svg { /* Chọn icon Font Awesome bên trong */
+
+ color: #1A1A1A; /* Màu icon mặc định là trắng */
+
+ font-size:17px; /* Điều chỉnh kích thước icon nếu cần, hoặc dùng size="lg" trong component */
+
+ transition: color 0.3s ease; /* Thêm hiệu ứng chuyển đổi mượt mà cho màu icon */
+
+}
+
+
+
+.floating-action-button:hover {
+
+ background-color: black; /* Màu nền khi hover là đen */
+
+ border-color: black; /* Màu viền khi hover cũng là đen */
+
+}
+
+
+
+.floating-action-button:hover svg {
+
+ color: white; /* Màu icon vẫn là trắng khi hover trên nền đen */
+
+}
+
+
+
+/* --- Global Layout with CSS Grid --- */
+
+.app-layout {
+
+ display: grid;
+
+ grid-template-columns: 120px 1fr; /* Cột đầu tiên 120px cho sidebar, cột thứ hai 1fr cho phần còn lại */
+
+ /* THAY ĐỔI: Header chiếm toàn bộ chiều ngang */
+
+ grid-template-rows: auto 1fr auto; /* Hàng đầu tiên tự động (cho header), hàng thứ hai co giãn (cho main), hàng thứ ba tự động (cho footer) */
+
+ grid-template-areas:
+
+  "header header" /* Header giờ chiếm cả hai cột */
+
+  "sidebar main"  /* Sidebar và Main content ở hàng thứ hai */
+
+  "footer footer"; /* Footer chiếm cả hai cột */
+
+ min-height: 100vh; /* Đảm bảo layout chiếm toàn bộ chiều cao màn hình */
+
+}
+
+
+
+/* Định vị các component vào các vùng đã đặt tên */
+
+.sidebar-layout {
+
+ grid-area: sidebar;
+
+ position: sticky;
+
+ top: 0; /* Sidebar dính vào top của viewport, header sẽ nằm trên nó */
+
+ height: 100vh; /* Giữ nguyên, sidebar sẽ kéo dài hết viewport (có thể che footer nếu không xử lý) */
+
+ z-index: 99; /* Z-index thấp hơn header */
+
+ width: 100px; /* Đảm bảo chiều rộng cố định khớp với grid-template-columns */
+
+ min-width: 100px; /* Đảm bảo chiều rộng tối thiểu */
+
+ padding-top: 10px; /* Giữ nguyên padding top nội bộ */
+
+ display: flex;
+
+ flex-direction: column;
+
+ align-items: center; /* Căn giữa toàn bộ nội dung sidebar */
+
+ background-color: #fff; /* Đảm bảo nền trắng */
+
+ border-right: 1px solid #e0e0e0; /* Viền phải */
+
+}
+
+
+
+.header-layout {
+
+ grid-area: header;
+
+ background-color: white !important;
+
+ border-bottom: 1px solid #e0e0e0;
+
+ z-index: 100; /* Z-index cao hơn sidebar để ghi đè */
+
+ position: sticky; /* Đảm bảo header dính trên cùng khi cuộn */
+
+ top: 0;
+
+}
+
+
+
+.main-content {
+
+ grid-area: main;
+
+ overflow-y: auto;
+
+ padding: 20px; /* Padding gốc */
+
+ background-color: #f8f8f8;
+
+ /* THAY ĐỔI: Thêm padding-top để nội dung không bị header che mất */
+
+ /* Điều chỉnh giá trị này tùy theo chiều cao thực tế của header của bạn */
+
+ /* Giả sử header cao khoảng 65px - 70px (tùy vào padding, icon, font size) */
+
+ padding-top: calc(20px + 65px); /* 20px padding gốc + chiều cao header */
+
+}
+
+
+
+/* Wrapper cho các trang nội dung để có padding nội bộ */
+
+.content-page-wrapper {
+
+  padding: 1rem;
+
+  background-color: white;
+
+  border-radius: 8px;
+
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+
+  min-height: calc(100vh - 100px); /* Đảm bảo đủ chiều cao cho cuộn */
+
+}
+
+
+
+footer {
+
+ grid-area: footer;
+
+}
+
+
+
+/* --- Sidebar Specific Styles (Adjusted for new structure - QUAN TRỌNG) --- */
+
+
+
+/* Style cho phần header của sidebar (logo và slogan) */
+
+.sidebar-header {
+
+ display: flex;
+
+ flex-direction: column;
+
+ align-items: center;
+
+ justify-content: center;
+
+ padding-bottom: 20px;
+
+ width: 100%;
+
+ text-align: center;
+
+}
+
+.sidebar-header img {
+
+  margin-right: 0 !important;
+
+  margin-bottom: 5px;
+
+}
+
+.sidebar-header span {
+
+  margin-left: 0 !important;
+
+  line-height: 1.2;
+
+  color: #343a40;
+
+}
+
+
+
+
+
+/* Style cho các mục trong sidebar - ĐÃ CHỈNH SỬA ĐỂ GIỐNG HÌNH ẢNH */
+
+/* --- Global Layout with CSS Grid --- */
+
+.app-layout {
+
+ display: grid;
+
+ grid-template-columns: 120px 1fr; /* Cột đầu tiên 120px cho sidebar, cột thứ hai 1fr cho phần còn lại */
+
+ grid-template-rows: auto 1fr auto; /* Hàng đầu tiên tự động (cho header), hàng thứ hai co giãn (cho main), hàng thứ ba tự động (cho footer) */
+
+ grid-template-areas:
+
+  "header header" /* Header giờ chiếm cả hai cột */
+
+  "sidebar main"  /* Sidebar và Main content ở hàng thứ hai */
+
+  "footer footer"; /* Footer chiếm cả hai cột */
+
+ min-height: 100vh; /* Đảm bảo layout chiếm toàn bộ chiều cao màn hình */
+
+}
+
+
+
+/* Định vị các component vào các vùng đã đặt tên */
+
+.sidebar-layout {
+
+ grid-area: sidebar;
+
+ position: sticky;
+
+ top: 0; /* Sidebar dính vào top của viewport, header sẽ nằm trên nó */
+
+ height: 0vh; /* Giữ nguyên, sidebar sẽ kéo dài hết viewport */
+
+ z-index: 99; /* Z-index thấp hơn header */
+
+ width: 120px; /* Đảm bảo chiều rộng cố định khớp với grid-template-columns */
+
+ min-width: 120px; /* Đảm bảo chiều rộng tối thiểu */
+
+ padding-top: 10px; /* Giữ nguyên padding top nội bộ */
+
+ display: flex;
+
+ flex-direction: column;
+
+ align-items: center; /* Căn giữa toàn bộ nội dung sidebar */
+
+ background-color: #fff; /* Đảm bảo nền trắng */
+
+ border-right: 1px solid #e0e0e0; /* Viền phải */
+
+}
+
+
+
+/* ... (các style khác của header, main-content, footer) ... */
+
+
+
+/* --- Sidebar Specific Styles (Adjusted for new structure - QUAN TRỌNG) --- */
+
+
+
+/* Style cho các mục trong sidebar - ĐÃ CHỈNH SỬA ĐỂ GIỐNG HÌNH ẢNH */
+
+/* App.css (hoặc sidebar.css) */
+
+
+
+/* --- Sidebar Specific Styles (Adjusted for new structure - QUAN TRỌNG) --- */
+
+
+
+/* Style cho các mục trong sidebar */
+
+.sidebar-item {
+
+ color: #343a40;
+
+ display: flex;
+
+ flex-direction: column;
+
+ align-items: center; /* Căn giữa icon và text theo chiều ngang */
+
+ justify-content: center; /* Căn giữa icon và text theo chiều dọc (nếu cần) */
+
+
+
+ /* Điều chỉnh padding và width để kiểm soát kích thước background */
+
+ padding: 8px 0; /* Giảm padding trên dưới xuống 8px */
+
+ width: 80px; /* Giảm chiều rộng cố định xuống 80px */
+
+ border-radius: 8px; /* Giữ nguyên hoặc điều chỉnh tùy ý */
+
+
+
+ margin: 5px auto; /* Căn giữa item trong sidebar, tạo khoảng cách trên dưới */
+
+
+
+ transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease; /* Bỏ transform khỏi transition */
+
+
+
+ text-align: center; /* Căn giữa text trong span */
+
+}
+
+
+
+.sidebar-item .sidebar-icon {
+
+ color: #6c757d;
+
+ font-size: 10px; /* Giảm kích thước icon một chút nếu cần */
+
+ transition: color 0.2s ease;
+
+ margin-bottom: 3px; /* Giảm khoảng cách giữa icon và text */
+
+}
+
+
+
+.sidebar-item .sidebar-text {
+
+ font-size: 10px; /* Giảm kích thước chữ một chút nếu cần */
+
+ font-weight: 500;
+
+ white-space: nowrap; /* Đảm bảo text không bị xuống dòng */
+
+}
+
+
+
+/* Style khi hover */
+
+.sidebar-item:hover {
+
+ background-color: #f0f0f0; /* Nền xám nhạt khi hover */
+
+ color: #000; /* Chữ đen khi hover */
+
+ box-shadow: 0 2px 2px rgba(0, 0, 0, 0.08); /* Bóng nhẹ */
+
+ z-index: 1;
+
+}
+
+
+
+.sidebar-item:hover .sidebar-icon {
+
+ color: #000; /* Icon đen khi hover */
+
+}
+
+
+
+/* Style khi active (được chọn) */
+
+.sidebar-item.active {
+
+ background-color: #e0e0e0; /* Nền xám cho mục active */
+
+ color: #000; /* Chữ đen khi active */
+
+ box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+
+}
+
+
+
+.sidebar-item.active .sidebar-icon {
+
+ color: #000; /* Icon đen khi active */
+
+}
+
+/* --- Header Specific Styles (Adjusted for new structure) --- */
+
+.navbar.header-layout {
+
+ padding-top: 1rem !important;
+
+ padding-bottom: 1rem !important;
+
+ justify-content: space-between;
+
+}
+
+
+
+.navbar .input-group {
+
+ flex-grow: 1;
+
+ max-width: 500px;
+
+ margin-left: auto;
+
+ margin-right: auto;
+
+}
+
+
+
+.navbar .input-group-text,
+
+.navbar .form-control {
+
+ background-color: #fff;
+
+ border: none;
+
+}
+
+.navbar .input-group-text {
+
+ border-top-left-radius: 6px;
+
+ border-bottom-left-radius: 6px;
+
+}
+
+.navbar .form-control {
+
+ border-top-right-radius: 6px;
+
+ border-bottom-right-radius: 6px;
+
+}
+
+
+
+/* Màu chữ "Khoá học của tôi" và icon */
+
+.text-secondary {
+
+ color: #495057 !important;
+
+}
+
+.text-secondary:hover {
+
+ color: #000 !important;
+
+}
+
+
+
+/* Định vị chấm đỏ thông báo */
+
+.dropdown-menu {
+
+ z-index: 1050;
+
+}
+
+
+
+.notification-item.notification-unread {
+
+ background-color: #e0e0e0;
+
+}
+
+.notification-item.notification-unread:hover {
+
+ background-color: #d0d0d0;
+
+}
+
+
+
+
+
+/* --- Footer Specific Styles (Adjusted for new structure) --- */
+
+footer {
+
+ grid-area: footer;
+
+ background-color: #343a40;
+
+ color: white;
+
+ padding-top: 3rem !important;
+
+ padding-bottom: 1.5rem !important;
+
+}
+
+
+
+/* --- Nút loa nổi (Floating Action Button) --- */
+
+.floating-action-button {
+
+ position: fixed;
+
+ bottom: 20px;
+
+ left: 120px; /* Vị trí mới để nó nằm bên cạnh sidebar */
+
+ background-color: #343a40;
+
+ border-radius: 50%;
+
+ width: 45px;
+
+ height: 45px;
+
+ display: flex;
+
+ align-items: center;
+
+ justify-content: center;
+
+ cursor: pointer;
+
+ border: 1px solid #6c757d;
+
+ transition: background-color 0.3s ease, border-color 0.3s ease;
+
+ z-index: 1050;
+
+ margin-right: 80px;
+
+}
+
+
+
+.floating-action-button svg {
+
+ color: white;
+
+ font-size: 1.25rem;
+
+ transition: color 0.3s ease;
+
+}
+
+
+
+.floating-action-button:hover {
+
+ background-color: black;
+
+ border-color: black;
+
+}
+
+
+
+.floating-action-button:hover svg {
+
+ color: white;
+
 }
