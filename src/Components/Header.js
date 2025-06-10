@@ -67,6 +67,7 @@ const Header = () => {
   };
 
   return (
+    <div id="simp-lord">
     <nav
       className="navbar navbar-expand-lg navbar-dark bg-dark-custom py-3 header-layout" /* Thêm header-layout */
       style={{ borderBottom: "1px solid #e0e0e0" }}
@@ -356,6 +357,7 @@ const Header = () => {
         </div>
       </div>
     </nav>
+    </div>
   );
 };
 

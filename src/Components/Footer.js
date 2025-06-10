@@ -4,8 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faYoutube, faTiktok } from '@fortawesome/free-brands-svg-icons';
 import { faBullhorn, faVolumeUp } from '@fortawesome/free-solid-svg-icons';
 
-// Đảm bảo bạn đã cài các gói Font Awesome này:
-// npm install --save @fortawesome/fontawesome-svg-core @fortawesome/free-brands-svg-icons @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons
+
 
 const Footer = () => {
   return (
